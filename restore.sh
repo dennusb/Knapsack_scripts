@@ -6,7 +6,7 @@ if [ $1 == "-h" ]; then
     exit
 fi
 
-if [ $filename == ""]; then
+if [ "$filename" == "" ]; then
         echo -e "A file to restore has not been provided. Please provide a filename like <script> <filename>"
         exit
 fi
@@ -24,7 +24,7 @@ while :
         if [ "$content" != "{\"imports\":[]}" ]; then
                 echo -ne "."
         else
-                echo "$9date) Importing into index $2 finished!"
+                echo "$(date) Importing into index $2 finished!"
         exit
         fi
         sleep 3
