@@ -1,6 +1,16 @@
 filename=$1
 index=$2
 
+if [ $1 == "-h" ]; then
+    echo -e "Usage : <script> <backupfolder>.\nPlease don't use a trailing slash at the end of the folder"
+    exit
+fi
+
+if [ $filename == ""]; then
+        echo -e "A file to restore has not been provided. Please provide a filename like <script> <filename>"
+        exit
+fi
+
 curl=$(curl -XPOST "localhost:9200/$2/_import?path=$1" -s)
 if [[ "$curl" == *error* ]]; then
         echo "$(date) An error ocurred. Please check the error :"
